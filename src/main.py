@@ -29,10 +29,14 @@ def main():
     
     if not is_admin() and not is_frozen:
         logger.warning("Not running as administrator - some features may be limited")
-        response = input("Run as administrator? (y/n): ")
-        if response.lower() == 'y':
-            run_as_admin()
-            return
+        try:
+            response = input("Run as administrator? (y/n): ")
+            if response.lower() == 'y':
+                run_as_admin()
+                return
+        except (EOFError, OSError):
+            # No console available, skip prompt
+            pass
     elif not is_admin():
         logger.warning("Not running as administrator - some features may be limited")
     
@@ -74,8 +78,20 @@ def main():
         
     except Exception as e:
         logger.error(f"Failed to start application: {e}")
-        print(f"Error: {e}")
-        input("Press Enter to exit...")
+        # Show error in messagebox instead of console for windowed apps
+        try:
+            from tkinter import messagebox
+            root = tk.Tk()
+            root.withdraw()
+            messagebox.showerror("Application Error", f"Failed to start:\n\n{e}")
+        except:
+            print(f"Error: {e}")
+            # Only try input if we have a console
+            if not getattr(sys, 'frozen', False):
+                try:
+                    input("Press Enter to exit...")
+                except (EOFError, OSError):
+                    pass
 
 if __name__ == "__main__":
     main()
