@@ -38,7 +38,7 @@ jobs:
           python-version: "3.11"
       - run: python -m pip install -U pip
       - run: pip install -r requirements.txt
-      - run: pyinstaller --noconfirm --onefile --windowed --name indentured_servant --add-data "src;src" --hidden-import=tkinter --hidden-import=tkinter.ttk --hidden-import=tkinter.messagebox --hidden-import=src --hidden-import=src.main --hidden-import=src.gui.main_window --hidden-import=src.utils.logger --hidden-import=src.utils.windows_tools scripts\\pyinstaller_entry.py
+      - run: pyinstaller --noconfirm --onefile --windowed --name indentured_servant --add-data "src;src" --hidden-import=tkinter --hidden-import=tkinter.ttk --hidden-import=tkinter.messagebox --hidden-import=tkinter.font --hidden-import=tkinter.filedialog --hidden-import=tkinter.scrolledtext --hidden-import=src --hidden-import=src.main --hidden-import=src.gui.main_window --hidden-import=src.utils.logger --hidden-import=src.utils.windows_tools scripts\\pyinstaller_entry.py
       - uses: actions/upload-artifact@v4
         with:
           name: indentured_servant-windows-exe
