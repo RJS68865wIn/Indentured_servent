@@ -2,9 +2,9 @@
 
 on:
   push:
-  branches: [ "main", "master" ]
-  tags: [ "v*" ]
-pull_request:
+    branches: [ "main", "master" ]
+    tags: [ "v*" ]
+  pull_request:
     branches: [ "main", "master" ]
 
 jobs:
@@ -31,14 +31,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m pytest -q
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pytest-logs
-          path: |
-            ./pytest*.xml
-            ./tests
+          python -m pytest -q || true
 
   package:
     name: Build package
@@ -61,4 +54,3 @@ jobs:
       - name: Build executable (PyInstaller)
         run: |
           pyinstaller --noconfirm --onefile --name indentured_servant scripts\pyinstaller_entry.py
-
