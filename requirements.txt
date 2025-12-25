@@ -12,3 +12,5 @@ pyinstaller>=5.13.0; sys_platform == "win32"  # For building EXE
 pandas>=2.0.0  # For data analysis
 matplotlib>=3.7.0  # For charts
 pillow>=10.0.0  # For image handling
+markdown>=3.4.0  # For AI assistant formatting
+html2text>=2020.0.0  # For HTML conversion
