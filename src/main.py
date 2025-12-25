@@ -24,12 +24,17 @@ def main():
     logger.info("Starting Indentured Servant")
     
     # Check if running as admin (optional but recommended for some features)
-    if not is_admin():
+    # Skip admin prompt when running as packaged exe (no console available)
+    is_frozen = getattr(sys, 'frozen', False)
+    
+    if not is_admin() and not is_frozen:
         logger.warning("Not running as administrator - some features may be limited")
         response = input("Run as administrator? (y/n): ")
         if response.lower() == 'y':
             run_as_admin()
             return
+    elif not is_admin():
+        logger.warning("Not running as administrator - some features may be limited")
     
     # Create data directories if they don't exist
     data_dirs = [
