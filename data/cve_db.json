@@ -1,0 +1,18 @@
+{
+  "OpenSSH": [
+    {
+      "cve": "CVE-2016-3115",
+      "summary": "Use-after-free in session.c in OpenSSH",
+      "severity": "high",
+      "references": ["https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3115"]
+    }
+  ],
+  "Apache httpd": [
+    {
+      "cve": "CVE-2021-41773",
+      "summary": "Path traversal vulnerability in Apache HTTP Server",
+      "severity": "critical",
+      "references": ["https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-41773"]
+    }
+  ]
+}

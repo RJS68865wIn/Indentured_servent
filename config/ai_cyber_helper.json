@@ -1,0 +1,26 @@
+{
+  "enable_vuln_scan": true,
+  "enable_network_analysis": true,
+  "vuln_scan": {
+    "scan_timeout_seconds": 300,
+    "max_concurrent_scans": 4,
+    "scan_delay_ms": 50,
+    "scan_safe_mode": true,
+    "allow_public_targets": false,
+    "cve_db_path": "data/cve_db.json",
+    "use_online_cve_lookup": false
+  },
+  "network_analysis": {
+    "pcap_dir": "data/pcaps",
+    "ingest_live_interface": false,
+    "flow_timeout_seconds": 120
+  },
+  "report": {
+    "output_dir": "data/reports",
+    "format": ["json", "html"]
+  },
+  "logging": {
+    "level": "INFO",
+    "anonymize_ips": false
+  }
+}
