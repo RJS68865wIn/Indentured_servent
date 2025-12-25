@@ -4,9 +4,6 @@ Modern, tabbed interface for cybersecurity operations
 """
 import tkinter as tk
 from tkinter import ttk, font
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
-import sv_ttk  # For Windows 11 style
 
 from .dashboard import DashboardTab
 from .scanner_tab import ScannerTab
@@ -25,8 +22,18 @@ class MainWindow:
         # Setup logger
         self.logger = setup_logger()
         
-        # Set Windows 11 style
-        sv_ttk.set_theme("dark")
+        # Configure modern style
+        try:
+            self.root.tk.call("source", "azure.tcl")
+            self.root.tk.call("set_theme", "dark")
+        except:
+            # Fallback to default ttk theme
+            style = ttk.Style()
+            available_themes = style.theme_names()
+            if 'vista' in available_themes:
+                style.theme_use('vista')
+            elif 'clam' in available_themes:
+                style.theme_use('clam')
         
         # Configure window
         self.root.geometry("1400x900")
