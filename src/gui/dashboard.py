@@ -3,8 +3,6 @@ Dashboard Tab - Shows security overview and quick actions
 """
 import tkinter as tk
 from tkinter import ttk
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
 import threading
 import time
 from datetime import datetime

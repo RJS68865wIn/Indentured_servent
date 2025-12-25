@@ -3,8 +3,6 @@ AI Assistant Tab - GUI for interacting with the AI cybersecurity assistant
 """
 import tkinter as tk
 from tkinter import ttk, scrolledtext
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
 import threading
 import time
 import json

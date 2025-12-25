@@ -3,8 +3,6 @@ Security Scanner Tab - GUI for running security scans
 """
 import tkinter as tk
 from tkinter import ttk, messagebox
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
 import threading
 import time
 from datetime import datetime

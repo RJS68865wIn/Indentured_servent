@@ -374,8 +374,11 @@ class MainWindow:
     
     def _change_theme(self, theme_name: str):
         """Change application theme"""
-        sv_ttk.set_theme(theme_name)
-        self._update_status(f"Theme changed to {theme_name}")
+        try:
+            self.style.theme_use(theme_name)
+            self._update_status(f"Theme changed to {theme_name}")
+        except tk.TclError:
+            self._update_status(f"Theme {theme_name} not available")
     
     def _open_docs(self):
         """Open documentation"""
