@@ -36,4 +36,10 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.11"
-      - run: echo "Package job would run for tag ${{ github.ref_name }}"
+      - run: python -m pip install -U pip
+      - run: pip install -r requirements.txt
+      - run: pyinstaller --noconfirm --onefile --name indentured_servant scripts\\pyinstaller_entry.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: indentured_servant-windows-exe
+          path: dist/indentured_servant.exe
