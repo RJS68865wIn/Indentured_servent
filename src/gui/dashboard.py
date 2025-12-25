@@ -8,8 +8,8 @@ import time
 from datetime import datetime
 from typing import Dict, Any
 
-from ..utils.windows_tools import get_system_info, check_firewall_status
-from ..secure_config import WindowsSecureConfig
+from src.utils.windows_tools import get_system_info, check_firewall_status
+from src.secure_config import WindowsSecureConfig
 
 class DashboardTab:
     """Dashboard tab showing security overview and metrics"""

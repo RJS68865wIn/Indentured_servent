@@ -9,8 +9,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any
 
-from ..security_scanner import WindowsSecurityScanner, ScanResult
-from ..utils.logger import setup_logger
+from src.security_scanner import WindowsSecurityScanner, ScanResult
+from src.utils.logger import setup_logger
 
 class ScannerTab:
     """Security Scanner tab for running various security scans"""

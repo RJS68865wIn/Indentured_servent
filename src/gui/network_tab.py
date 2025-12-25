@@ -9,9 +9,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Any
 
-from ..network_tools import NetworkTools, NetworkDevice
-from ..utils.logger import setup_logger
-from ..utils.windows_tools import get_local_ip
+from src.network_tools import NetworkTools, NetworkDevice
+from src.utils.logger import setup_logger
+from src.utils.windows_tools import get_local_ip
 
 class NetworkTab:
     """Network Tools tab for scanning and VPN management"""

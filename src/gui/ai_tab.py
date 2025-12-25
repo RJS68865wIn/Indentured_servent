@@ -11,8 +11,8 @@ from typing import List, Dict, Any
 import markdown
 import html2text
 
-from ..ai_assistant import AIAssistant, AIMessage
-from ..utils.logger import setup_logger
+from src.ai_assistant import AIAssistant, AIMessage
+from src.utils.logger import setup_logger
 
 class AITab:
     """AI Assistant tab for interactive cybersecurity assistance"""

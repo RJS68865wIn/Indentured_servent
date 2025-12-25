@@ -11,8 +11,8 @@ from typing import Dict, List, Any, Optional, Tuple, Callable
 from datetime import datetime
 from dataclasses import dataclass, asdict
 
-from .utils.logger import setup_logger, log_function_call
-from .secure_config import WindowsSecureConfig
+from src.utils.logger import setup_logger, log_function_call
+from src.secure_config import WindowsSecureConfig
 
 @dataclass
 class AIMessage:

@@ -14,8 +14,8 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, asdict
 
-from .utils.windows_tools import run_powershell
-from .utils.logger import setup_logger, log_function_call
+from src.utils.windows_tools import run_powershell
+from src.utils.logger import setup_logger, log_function_call
 
 @dataclass
 class ScanResult:

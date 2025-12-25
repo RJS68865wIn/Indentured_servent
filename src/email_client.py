@@ -19,9 +19,9 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional, Tuple, Union
 from dataclasses import dataclass, asdict
 
-from .secure_config import WindowsSecureConfig, generate_secure_password, mask_email
-from .utils.logger import setup_logger, log_function_call
-from .utils.windows_tools import run_powershell
+from src.secure_config import WindowsSecureConfig, generate_secure_password, mask_email
+from src.utils.logger import setup_logger, log_function_call
+from src.utils.windows_tools import run_powershell
 
 @dataclass
 class EmailConfig:

@@ -9,9 +9,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Any
 
-from ..email_client import EmailClient
-from ..secure_config import mask_email, generate_secure_password
-from ..utils.logger import setup_logger
+from src.email_client import EmailClient
+from src.secure_config import mask_email, generate_secure_password
+from src.utils.logger import setup_logger
 
 class EmailTab:
     """Email Tools tab for configuration and sending"""

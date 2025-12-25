@@ -5,12 +5,12 @@ Modern, tabbed interface for cybersecurity operations
 import tkinter as tk
 from tkinter import ttk, font
 
-from .dashboard import DashboardTab
-from .scanner_tab import ScannerTab
-from .network_tab import NetworkTab
-from .email_tab import EmailTab
-from .cyber_helper_tab import CyberHelperTab
-from ..utils.logger import setup_logger
+from src.gui.dashboard import DashboardTab
+from src.gui.scanner_tab import ScannerTab
+from src.gui.network_tab import NetworkTab
+from src.gui.email_tab import EmailTab
+from src.gui.cyber_helper_tab import CyberHelperTab
+from src.utils.logger import setup_logger
 
 class MainWindow:
     """Main application window with tabbed interface"""
