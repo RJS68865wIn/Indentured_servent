@@ -5,8 +5,8 @@ psutil>=5.9.0
 python-dotenv>=1.0.0
 
 # Windows-specific
-pywin32>=306
-pyinstaller>=5.13.0  # For building EXE
+pywin32>=306; sys_platform == "win32"
+pyinstaller>=5.13.0; sys_platform == "win32"  # For building EXE
 
 # Optional for enhanced features
 pandas>=2.0.0  # For data analysis
