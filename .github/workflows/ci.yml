@@ -42,4 +42,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: indentured_servant-windows-exe
-          path: dist/
+          path: dist/indentured_servant.exe
