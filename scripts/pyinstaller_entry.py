@@ -3,10 +3,23 @@
 This script imports and runs `src.main.main()` so packaging is consistent with the module entry point.
 """
 import sys
+import os
 import traceback
 
 if __name__ == '__main__':
     try:
+        # Add bundled directory to Python path for PyInstaller
+        if getattr(sys, 'frozen', False):
+            # Running as compiled executable
+            bundle_dir = sys._MEIPASS
+        else:
+            # Running as script
+            bundle_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # Add bundle directory to path so absolute imports work
+        if bundle_dir not in sys.path:
+            sys.path.insert(0, bundle_dir)
+        
         # Import here so PyInstaller collects dependencies
         import src.main as app
         app.main()
