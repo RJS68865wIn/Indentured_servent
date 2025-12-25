@@ -1,0 +1,10 @@
+{
+	"example": {
+		"email": "user@example.com",
+		"app_password": "",
+		"smtp_server": "smtp.example.com",
+		"smtp_port": 587,
+		"status": "unverified",
+		"last_used": null
+	}
+}

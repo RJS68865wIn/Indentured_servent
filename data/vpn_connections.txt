@@ -1,0 +1,1 @@
+VPN connection history will be stored here.

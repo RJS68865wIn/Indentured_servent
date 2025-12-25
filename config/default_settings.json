@@ -1,0 +1,12 @@
+{
+	"theme": "default",
+	"logging": {
+		"level": "INFO",
+		"file": "logs.txt"
+	},
+	"ai": {
+		"enabled": true,
+		"model": "local",
+		"temperature": 0.2
+	}
+}
