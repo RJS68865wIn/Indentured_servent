@@ -83,7 +83,6 @@ class NetworkTab:
             setup_frame,
             text="🚀 Setup WireGuard VPN",
             command=self._setup_vpn,
-            bootstyle="success",
             width=25
         ).pack(pady=(0, 10))
         
@@ -132,7 +131,6 @@ class NetworkTab:
             button_frame,
             text="▶️ Start VPN",
             command=self._start_vpn,
-            bootstyle="success",
             width=15
         )
         self.start_vpn_btn.pack(side=tk.LEFT, padx=(0, 10))
@@ -141,7 +139,6 @@ class NetworkTab:
             button_frame,
             text="⏹️ Stop VPN",
             command=self._stop_vpn,
-            bootstyle="danger",
             width=15
         )
         self.stop_vpn_btn.pack(side=tk.LEFT, padx=10)
@@ -210,7 +207,6 @@ class NetworkTab:
             control_frame,
             text="🔍 Scan Network",
             command=self._scan_network,
-            bootstyle="primary",
             width=20
         )
         self.scan_button.pack(pady=(0, 10))
@@ -363,7 +359,6 @@ class NetworkTab:
             port_frame,
             text="🚀 Start Port Scan",
             command=self._start_port_scan,
-            bootstyle="success",
             width=20
         ).pack(pady=(0, 10))
         
@@ -479,8 +474,7 @@ class NetworkTab:
                 tools_grid,
                 text=text,
                 command=command,
-                width=20,
-                bootstyle="outline"
+                width=20
             )
             btn.grid(row=row, column=col, padx=10, pady=10, sticky="ew")
         

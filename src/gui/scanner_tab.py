@@ -165,7 +165,6 @@ class ScannerTab:
             button_frame,
             text="🚀 START SCAN",
             command=self._start_scan,
-            bootstyle="success",
             width=20
         )
         self.scan_button.pack(pady=(0, 10))
@@ -175,7 +174,6 @@ class ScannerTab:
             button_frame,
             text="⏹️ STOP SCAN",
             command=self._stop_scan,
-            bootstyle="danger",
             width=20,
             state=tk.DISABLED
         )
@@ -197,7 +195,6 @@ class ScannerTab:
                 quick_frame,
                 text=text,
                 command=command,
-                bootstyle="outline",
                 width=18
             )
             btn.pack(pady=5)
@@ -387,7 +384,6 @@ class ScannerTab:
             action_frame,
             text="🗑️ Remove Threat",
             command=self._remove_threat,
-            bootstyle="danger",
             width=15
         ).pack(side=tk.LEFT, padx=(0, 10))
         
@@ -487,7 +483,7 @@ class ScannerTab:
             action_frame,
             text="🗑️ Delete",
             command=self._delete_selected_report,
-            bootstyle="danger",
+
             width=12
         ).pack(side=tk.LEFT, padx=(10, 0))
         

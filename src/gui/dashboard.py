@@ -153,8 +153,7 @@ class DashboardTab:
                 actions_grid,
                 text=f"{icon} {text}",
                 command=command,
-                width=20,
-                bootstyle="outline"
+                width=20
             )
             btn.grid(row=row, column=col, padx=10, pady=10, sticky="ew")
         

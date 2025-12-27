@@ -95,7 +95,6 @@ class AITab:
             input_frame,
             text="📤 Send",
             command=self._send_message,
-            bootstyle="primary",
             width=10
         )
         self.send_button.pack(side=tk.RIGHT)
@@ -116,7 +115,6 @@ class AITab:
                 quick_frame,
                 text=text,
                 command=lambda t=text: self._quick_action(t),
-                bootstyle="outline",
                 width=15
             )
             btn.pack(side=tk.LEFT, padx=(0, 10))
@@ -201,7 +199,6 @@ class AITab:
             control_frame,
             text="🗑️ Clear Chat",
             command=self._clear_chat,
-            bootstyle="danger",
             width=15
         ).pack(pady=(0, 10))
         

@@ -96,7 +96,6 @@ class EmailTab:
             action_frame,
             text="🗑️ Remove Service",
             command=self._remove_selected_service,
-            bootstyle="danger",
             width=15
         ).pack(side=tk.LEFT, padx=10)
         
@@ -214,7 +213,6 @@ class EmailTab:
             setup_frame,
             text="🚀 Configure Service",
             command=self._configure_service,
-            bootstyle="success",
             width=20
         ).pack()
         
@@ -374,7 +372,6 @@ class EmailTab:
             send_frame,
             text="📤 Send Email",
             command=self._send_email,
-            bootstyle="success",
             width=15
         )
         self.send_button.pack(side=tk.LEFT, padx=(0, 10))
@@ -392,7 +389,6 @@ class EmailTab:
             send_frame,
             text="🗑️ Clear Form",
             command=self._clear_form,
-            bootstyle="danger",
             width=12
         ).pack(side=tk.LEFT, padx=(10, 0))
         
@@ -493,7 +489,6 @@ class EmailTab:
             action_frame,
             text="🗑️ Delete Template",
             command=self._delete_template,
-            bootstyle="danger",
             width=15
         ).pack(side=tk.LEFT, padx=(10, 0))
         
@@ -555,7 +550,6 @@ class EmailTab:
             action_frame,
             text="🗑️ Clear History",
             command=self._clear_history,
-            bootstyle="danger",
             width=12
         ).pack(side=tk.LEFT, padx=(10, 0))
         
@@ -1215,7 +1209,6 @@ class EmailTab:
             button_frame,
             text="💾 Save Template",
             command=save_template,
-            bootstyle="success",
             width=15
         ).pack(side=tk.LEFT, padx=(0, 10))
         
