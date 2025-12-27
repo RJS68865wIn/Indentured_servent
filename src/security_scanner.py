@@ -242,8 +242,22 @@ class WindowsSecurityScanner:
         # 6. Check network configuration
         network_warnings = self._check_network_config()
         warnings.extend(network_warnings)
+
+        # 7. Coverage warnings for unimplemented categories
+        warnings.extend(self._full_scan_category_warnings())
         
         return threats, warnings
+
+    def _full_scan_category_warnings(self) -> List[str]:
+        """Return warnings for scan categories not yet implemented"""
+        return [
+            "Web application vulnerability scanning not implemented in this build",
+            "Database scanning not implemented in this build",
+            "Source code scanning not implemented in this build",
+            "Cloud vulnerability scanning not implemented in this build",
+            "External perimeter scanning not implemented in this build",
+            "Compliance baseline scanning not implemented in this build"
+        ]
     
     def _run_custom_scan(self, scan_paths: List[str]) -> Tuple[List[Dict[str, Any]], List[str]]:
         """Run custom scan on specified paths"""
@@ -685,7 +699,7 @@ class WindowsSecurityScanner:
         return recommendations[:10]  # Limit to 10 recommendations
     
     def _save_scan_result(self, scan_id: str, result: ScanResult):
-        """Save scan result to file"""
+        """Save scan result to reports folder and user's Desktop"""
         try:
             # Create reports directory
             reports_dir = Path("data/reports")
@@ -696,10 +710,24 @@ class WindowsSecurityScanner:
             with open(report_file, 'w') as f:
                 json.dump(asdict(result), f, indent=2, default=str)
             
-            # Also save as text summary
+            # Generate text summary once for reuse
+            summary_text = self._generate_summary(result)
+            
+            # Save as text summary in app reports directory
             summary_file = reports_dir / f"{scan_id}_summary.txt"
             with open(summary_file, 'w') as f:
-                f.write(self._generate_summary(result))
+                f.write(summary_text)
+            
+            # Also write a copy to the user's Desktop for easy access
+            try:
+                desktop_dir = Path(os.environ.get("USERPROFILE", str(Path.home()))) / "Desktop"
+                desktop_dir.mkdir(parents=True, exist_ok=True)
+                desktop_summary = desktop_dir / f"indentured_servant_{scan_id}_summary.txt"
+                with open(desktop_summary, 'w') as f:
+                    f.write(summary_text)
+                self.logger.info(f"Desktop summary written: {desktop_summary}")
+            except Exception as desktop_err:
+                self.logger.warning(f"Failed to write Desktop summary: {desktop_err}")
             
             self.logger.info(f"Scan report saved: {report_file}")
         
