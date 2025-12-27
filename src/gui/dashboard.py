@@ -156,35 +156,6 @@ class DashboardTab:
                 width=20
             )
             btn.grid(row=row, column=col, padx=10, pady=10, sticky="ew")
-        
-        # ===== SYSTEM INFO =====
-        sysinfo_frame = ttk.LabelFrame(scrollable_frame, text="System Information", padding=20)
-        sysinfo_frame.pack(fill=tk.X)
-        
-        # Create treeview for system info
-        columns = ("Property", "Value")
-        self.sysinfo_tree = ttk.Treeview(
-            sysinfo_frame,
-            columns=columns,
-            show="tree headings",
-            height=8
-        )
-        
-        # Configure columns
-        self.sysinfo_tree.heading("#0", text="", anchor=tk.W)
-        self.sysinfo_tree.column("#0", width=0, stretch=False)
-        
-        for col in columns:
-            self.sysinfo_tree.heading(col, text=col, anchor=tk.W)
-            self.sysinfo_tree.column(col, anchor=tk.W, width=200)
-        
-        # Add scrollbar
-        tree_scroll = ttk.Scrollbar(sysinfo_frame, orient=tk.VERTICAL, command=self.sysinfo_tree.yview)
-        self.sysinfo_tree.configure(yscrollcommand=tree_scroll.set)
-        
-        # Pack treeview and scrollbar
-        self.sysinfo_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        tree_scroll.pack(side=tk.RIGHT, fill=tk.Y)
     
     def _on_mousewheel(self, event):
         """Handle mousewheel scrolling"""
@@ -318,44 +289,6 @@ class DashboardTab:
         # Calculate average
         return score // items if items > 0 else 0
     
-    def _load_system_info(self):
-        """Load and display system information"""
-        # Clear existing items
-        for item in self.sysinfo_tree.get_children():
-            self.sysinfo_tree.delete(item)
-        
-        # Get system info
-        info = get_system_info()
-        
-        # Add info to treeview
-        items = [
-            ("Operating System", f"Windows {info['version'].get('release', 'Unknown')}"),
-            ("Edition", info['version'].get('edition', 'Unknown')),
-            ("Build", info['version'].get('build', 'Unknown')),
-            ("Hostname", info['hostname']),
-            ("Local IP", info['local_ip']),
-            ("Public IP", info['public_ip'] or "Not available"),
-            ("CPU Cores", str(info['cpu_count'])),
-        ]
-        
-        # Add memory info
-        if info['memory']:
-            mem_gb = info['memory']['total'] / (1024**3)
-            used_percent = info['memory']['percent']
-            items.append(("Memory", f"{mem_gb:.1f} GB ({used_percent}% used)"))
-        
-        # Add disk info
-        if info['disks']:
-            for i, disk in enumerate(info['disks'][:3]):  # Show first 3 disks
-                total_gb = disk['total'] / (1024**3)
-                used_percent = disk['percent']
-                items.append((f"Disk {i+1} ({disk['device']})", 
-                            f"{total_gb:.1f} GB ({used_percent}% used)"))
-        
-        # Insert items
-        for property, value in items:
-            self.sysinfo_tree.insert("", tk.END, values=(property, value))
-    
     def refresh(self):
         """Refresh dashboard data"""
         # Update in background thread
@@ -365,9 +298,6 @@ class DashboardTab:
             
             # Update UI in main thread
             self.frame.after(0, self._update_ui, score)
-            
-            # Load system info
-            self.frame.after(0, self._load_system_info)
         
         thread = threading.Thread(target=update, daemon=True)
         thread.start()

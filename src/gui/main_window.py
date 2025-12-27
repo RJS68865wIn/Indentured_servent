@@ -10,6 +10,7 @@ from src.gui.scanner_tab import ScannerTab
 from src.gui.network_tab import NetworkTab
 from src.gui.email_tab import EmailTab
 from src.gui.cyber_helper_tab import CyberHelperTab
+from src.gui.system_info_tab import SystemInfoTab
 from src.utils.logger import setup_logger
 
 class MainWindow:
@@ -182,6 +183,10 @@ class MainWindow:
         # Email Tools Tab
         self.tabs['email'] = EmailTab(self.notebook)
         self.notebook.add(self.tabs['email'].frame, text="📧 Email")
+
+        # System Information Tab
+        self.tabs['sysinfo'] = SystemInfoTab(self.notebook)
+        self.notebook.add(self.tabs['sysinfo'].frame, text="💻 System Info")
 
         # Cyber Helper Tab
         self.tabs['cyber'] = CyberHelperTab(self.notebook)
