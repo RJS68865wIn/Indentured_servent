@@ -23,22 +23,16 @@ def main():
     logger = setup_logger()
     logger.info("Starting Indentured Servant")
     
-    # Check if running as admin (optional but recommended for some features)
-    # Skip admin prompt when running as packaged exe (no console available)
-    is_frozen = getattr(sys, 'frozen', False)
-    
-    if not is_admin() and not is_frozen:
-        logger.warning("Not running as administrator - some features may be limited")
+    # Enforce admin privileges: relaunch with elevation if not already admin
+    # This is required for several scan actions (Defender, services, registry)
+    if not is_admin():
+        logger.warning("Elevating to administrator for full scanning capabilities")
         try:
-            response = input("Run as administrator? (y/n): ")
-            if response.lower() == 'y':
-                run_as_admin()
-                return
-        except (EOFError, OSError):
-            # No console available, skip prompt
-            pass
-    elif not is_admin():
-        logger.warning("Not running as administrator - some features may be limited")
+            run_as_admin()
+            return
+        except Exception as e:
+            logger.error(f"Elevation failed: {e}")
+            # Continue without exit so user sees the warning in GUI
     
     # Create data directories if they don't exist
     data_dirs = [
